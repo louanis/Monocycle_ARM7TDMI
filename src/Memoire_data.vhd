@@ -14,29 +14,18 @@ entity memoire_data is
 end entity memoire_data;
 
 architecture rtl of memoire_data is
-    type memorytype is array(63 downto 0) of std_logic_vector(31 downto 0); -- 64 mots de 32 bits
-    function init_memoire return memorytype is
-        variable result : memorytype;
-    begin
-        for i in 63 downto 0 loop
-            result(i) := (others => '0'); -- init à 0
-        end loop;
-        for i in 16 to 26 loop
-            result(i) := x"00000001"; -- init à 1 pour les adresses 16 à 26
-        end loop;
-        return result;
-    end function;
-    signal memory : memorytype := init_memoire; -- mémoire interne
+    type memoiretype is array(63 downto 0) of std_logic_vector(31 downto 0); -- 64 mots de 32 bits
+    signal memoire : memoiretype := (others => (others => '0')); -- mémoire interne
 begin
-    dataout <= memory(to_integer(unsigned(addr))); -- lecture asynchrone
+    dataout <= memoire(to_integer(unsigned(addr))); -- lecture asynchrone
 
     process(clk, rst)
     begin
         if rst = '1' then
-            memory <= init_memoire; -- rst mémoire
+            memoire <= (others => (others => '0')); -- rst mémoire
         elsif rising_edge(clk) then
             if wren = '1' then
-                memory(to_integer(unsigned(addr))) <= datain; -- écriture synchrone
+                memoire(to_integer(unsigned(addr))) <= datain; -- écriture synchrone
             end if;
         end if;
     end process;

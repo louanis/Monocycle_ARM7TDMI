@@ -20,7 +20,7 @@ entity Unite_traitement is
 end Unite_traitement;
 
 architecture RTL of Unite_traitement is
-    signal BusA, BusB, BusW, Imm_ext, SortieMux, ResAlu, DataMemOut : std_logic_vector(31 downto 0);
+    signal BusA, BusB, BusW, Imm_ext, SortieMux, ALUout, DataMemOut : std_logic_vector(31 downto 0);
     signal s_N, s_Z : std_logic;
 begin
 
@@ -62,7 +62,7 @@ begin
         OP => ALUCtr,
         A  => BusA,
         B  => SortieMux,
-        S  => ResAlu,
+        S  => ALUout,
         N  => s_N,
         Z  => s_Z
     );  
@@ -74,7 +74,7 @@ begin
         rst => rst,
         DataIn => BusB,
         DataOut => DataMemOut,
-        Addr => ResALU(31 downto 26),
+        Addr => ALUout(31 downto 26),
         WrEn => MemWr
     );
 
@@ -83,7 +83,7 @@ begin
         N => 32
     )
     port map(
-        A   => ResAlu,
+        A   => ALUout,
         B   => DataMemOut,
         COM => MemToReg,
         S   => BusW
