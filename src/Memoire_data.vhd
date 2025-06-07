@@ -23,6 +23,7 @@ begin
     begin
         if rst = '1' then
             memoire <= (others => (others => '0')); -- rst mémoire
+            memoire(32) <= "00000000000000001111111111111111";
         elsif rising_edge(clk) then
             if wren = '1' then
                 memoire(to_integer(unsigned(addr))) <= datain; -- écriture synchrone

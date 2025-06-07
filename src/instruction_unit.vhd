@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 entity instruction_unit is
     port(
-        clk      : in std_logic;
-        rst      : in std_logic;
+        clk       : in std_logic;
+        rst       : in std_logic;
         Offset    : in std_logic_vector(23 downto 0);
         nPCsel    : in std_logic;
         Instr     : out std_logic_vector(31 downto 0)
@@ -41,10 +41,10 @@ begin
             PC <= (others => '0');
         -- If CLK is on rising edge
         elsif rising_edge(clk) then
-            if nPCsel = '0' then
-                PC <= std_logic_vector(unsigned(PC) + 1);
+            if nPCsel = '1' then
+                PC <= std_logic_vector(signed(PC) + 1 + signed(PC_next));  -- Correct: PC + offset
             else
-                PC <= std_logic_vector(unsigned(PC) + 1 + unsigned(PC_next));
+                PC <= std_logic_vector(signed(PC) + 1);                 -- Normal increment
             end if;
         end if;
     end process;

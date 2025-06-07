@@ -20,23 +20,14 @@ end RegisterARM;
 architecture rtl of RegisterARM is
     type table is array (15 downto 0) of std_logic_vector(31 downto 0);
 
-    -- Fonction d'initialisation
-    function init_banc return table is
-        variable result : table;
-    begin
-        for i in 14 downto 0 loop
-            result(i) := (others => '0');
-        end loop;
-        result(15) := X"00000030";
-        return result;
-    end function;
+    
 
-    signal Banc : table := init_banc;
+    signal Banc : table;
 begin
     process(CLK, Reset)
     begin
         if Reset = '1' then
-            Banc <= init_banc;
+            Banc <= (others => (others => '0'));
         elsif rising_edge(CLK) then
             if WE = '1' then
                 if to_integer(unsigned(RW)) >= 0 and to_integer(unsigned(RW)) <= 15 then

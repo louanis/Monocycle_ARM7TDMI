@@ -14,7 +14,10 @@ entity Unite_traitement is
         ALUCtr   : in std_logic_vector(1 downto 0);
         MemWr    : in std_logic;
         MemToReg : in std_logic;
-        Immediat : in std_logic_vector(7 downto 0)
+        Immediat : in std_logic_vector(7 downto 0);
+        N        : out std_logic;
+        Z        : out std_logic;
+        Aff      : out std_logic_vector(31 downto 0)
         
     );
 end Unite_traitement;
@@ -63,8 +66,8 @@ begin
         A  => BusA,
         B  => SortieMux,
         S  => ALUout,
-        N  => s_N,
-        Z  => s_Z
+        N  => N,
+        Z  => Z
     );  
 
 
@@ -74,7 +77,7 @@ begin
         rst => rst,
         DataIn => BusB,
         DataOut => DataMemOut,
-        Addr => ALUout(31 downto 26),
+        Addr => ALUout(5 downto 0),
         WrEn => MemWr
     );
 
@@ -89,7 +92,7 @@ begin
         S   => BusW
     );
 
-
+    Aff <= BusB;
 
 
 end RTL;
