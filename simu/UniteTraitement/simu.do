@@ -10,4 +10,4 @@ vcom ../../src/Unite_traitement.vhd
 vcom tb_Unite_traitement.vhd
 vsim tb_Unite_traitement
 add wave *
-run -all
+run 200ns

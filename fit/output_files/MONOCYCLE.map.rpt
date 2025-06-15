@@ -1,0 +1,960 @@
+Analysis & Synthesis report for MONOCYCLE
+Sun Jun 15 18:24:20 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: proco:processor|instruction_unit:instr_unit|Extend:extend
+ 13. Parameter Settings for User Entity Instance: proco:processor|Unite_traitement:Unit_trait|Extend:imm_extend
+ 14. Parameter Settings for User Entity Instance: proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_alu
+ 15. Parameter Settings for User Entity Instance: proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_toreg
+ 16. Parameter Settings for User Entity Instance: proco:processor|Unite_controle:Unit_controle|Reg:regist
+ 17. Parameter Settings for User Entity Instance: proco:processor|Unite_controle:Unit_controle|Mux2v1:rb_mux
+ 18. Parameter Settings for User Entity Instance: proco:processor|Reg:reg_aff
+ 19. Port Connectivity Checks: "proco:processor|Unite_controle:Unit_controle"
+ 20. Port Connectivity Checks: "proco:processor"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jun 15 18:24:20 2025          ;
+; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                      ; MONOCYCLE                                      ;
+; Top-level Entity Name              ; MONOCYCLE                                      ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 4,435                                          ;
+;     Total combinational functions  ; 2,235                                          ;
+;     Dedicated logic registers      ; 2,368                                          ;
+; Total registers                    ; 2368                                           ;
+; Total pins                         ; 71                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; MONOCYCLE          ; MONOCYCLE          ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
+;     Processor 7            ;   0.1%      ;
+;     Processor 8            ;   0.1%      ;
+;     Processors 9-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                              ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
+; ../src/Unite_traitement.vhd      ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd   ;         ;
+; ../src/Unite_controle.vhd        ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_controle.vhd     ;         ;
+; ../src/SEVEN_SEG.vhd             ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/SEVEN_SEG.vhd          ;         ;
+; ../src/RegisterARM.vhd           ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/RegisterARM.vhd        ;         ;
+; ../src/Reg.vhd                   ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Reg.vhd                ;         ;
+; ../src/proco.vhd                 ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd              ;         ;
+; ../src/Mux2v1.vhd                ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Mux2v1.vhd             ;         ;
+; ../src/MONOCYCLE.vhd             ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd          ;         ;
+; ../src/Memoire_data.vhd          ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd       ;         ;
+; ../src/instruction_unit.vhd      ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_unit.vhd   ;         ;
+; ../src/instruction_memory.vhd    ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_memory.vhd ;         ;
+; ../src/Extend.vhd                ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Extend.vhd             ;         ;
+; ../src/Decoder.vhd               ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Decoder.vhd            ;         ;
+; ../src/ALU.vhd                   ; yes             ; User VHDL File  ; D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/ALU.vhd                ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 4,435 ;
+;                                             ;       ;
+; Total combinational functions               ; 2235  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 1948  ;
+;     -- 3 input functions                    ; 180   ;
+;     -- <=2 input functions                  ; 107   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 2132  ;
+;     -- arithmetic mode                      ; 103   ;
+;                                             ;       ;
+; Total registers                             ; 2368  ;
+;     -- Dedicated logic registers            ; 2368  ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 71    ;
+;                                             ;       ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; pclk  ;
+; Maximum fan-out                             ; 2336  ;
+; Total fan-out                               ; 18036 ;
+; Average fan-out                             ; 3.80  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                  ;
++----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                ; Entity Name        ; Library Name ;
++----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------+--------------------+--------------+
+; |MONOCYCLE                             ; 2235 (42)           ; 2368 (33)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |MONOCYCLE                                                                         ; MONOCYCLE          ; work         ;
+;    |SEVEN_SEG:seven_seg1|              ; 20 (20)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|SEVEN_SEG:seven_seg1                                                    ; SEVEN_SEG          ; work         ;
+;    |SEVEN_SEG:seven_seg2|              ; 20 (20)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|SEVEN_SEG:seven_seg2                                                    ; SEVEN_SEG          ; work         ;
+;    |SEVEN_SEG:seven_seg3|              ; 20 (20)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|SEVEN_SEG:seven_seg3                                                    ; SEVEN_SEG          ; work         ;
+;    |SEVEN_SEG:seven_seg4|              ; 20 (20)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|SEVEN_SEG:seven_seg4                                                    ; SEVEN_SEG          ; work         ;
+;    |SEVEN_SEG:seven_seg5|              ; 20 (20)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|SEVEN_SEG:seven_seg5                                                    ; SEVEN_SEG          ; work         ;
+;    |SEVEN_SEG:seven_seg6|              ; 20 (20)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|SEVEN_SEG:seven_seg6                                                    ; SEVEN_SEG          ; work         ;
+;    |proco:processor|                   ; 2073 (0)            ; 2335 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor                                                         ; proco              ; work         ;
+;       |Reg:reg_aff|                    ; 0 (0)               ; 24 (24)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Reg:reg_aff                                             ; Reg                ; work         ;
+;       |Unite_controle:Unit_controle|   ; 22 (0)              ; 1 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_controle:Unit_controle                            ; Unite_controle     ; work         ;
+;          |Decoder:decod|               ; 17 (17)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_controle:Unit_controle|Decoder:decod              ; Decoder            ; work         ;
+;          |Mux2v1:rb_mux|               ; 4 (4)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_controle:Unit_controle|Mux2v1:rb_mux              ; Mux2v1             ; work         ;
+;          |Reg:regist|                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_controle:Unit_controle|Reg:regist                 ; Reg                ; work         ;
+;       |Unite_traitement:Unit_trait|    ; 2018 (0)            ; 2304 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait                             ; Unite_traitement   ; work         ;
+;          |ALU:alu_cabl_mux|            ; 78 (78)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|ALU:alu_cabl_mux            ; ALU                ; work         ;
+;          |Mux2v1:mux_alu|              ; 39 (39)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_alu              ; Mux2v1             ; work         ;
+;          |Mux2v1:mux_toreg|            ; 1427 (1427)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_toreg            ; Mux2v1             ; work         ;
+;          |RegisterARM:banc_reg|        ; 338 (338)           ; 256 (256)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg        ; RegisterARM        ; work         ;
+;          |memoire_data:mem_dat|        ; 136 (136)           ; 2048 (2048)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat        ; memoire_data       ; work         ;
+;       |instruction_unit:instr_unit|    ; 33 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|instruction_unit:instr_unit                             ; instruction_unit   ; work         ;
+;          |INSTRUCTION_MEMORY:inst_mem| ; 21 (21)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |MONOCYCLE|proco:processor|instruction_unit:instr_unit|INSTRUCTION_MEMORY:inst_mem ; INSTRUCTION_MEMORY ; work         ;
++----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                     ;
++-------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                 ; Reason for Removal                     ;
++-------------------------------------------------------------------------------+----------------------------------------+
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][3]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][3]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][3]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][3]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][3]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][3]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][3]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][3]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][2]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][2]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][2]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][2]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][2]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][2]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][2]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][2]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][1]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][1]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][1]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][1]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][1]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][1]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][1]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][1]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][0]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][0]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][0]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][0]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][0]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][0]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][0]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][0]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][7]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][7]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][7]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][7]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][7]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][7]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][7]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][7]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][6]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][6]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][6]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][6]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][6]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][6]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][6]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][6]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][5]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][5]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][5]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][5]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][5]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][5]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][5]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][5]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][4]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][4]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][4]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][4]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][4]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][4]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][4]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][4]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][11]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][11]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][11]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][11]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][11]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][11]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][11] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][11] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][10]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][10]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][10]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][10]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][10]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][10]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][10] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][10] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][9]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][9]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][9]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][9]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][9]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][9]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][9]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][9]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][8]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][8]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][8]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][8]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][8]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][8]   ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][8]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][8]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][15]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][15]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][15]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][15]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][15]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][15]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][15] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][15] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][14]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][14]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][14]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][14]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][14]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][14]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][14] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][14] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][13]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][13]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][13]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][13]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][13]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][13]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][13] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][13] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][12]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][12]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][12]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][12]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][12]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][12]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][12] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][12] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][19]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][19]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][19]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][19]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][19]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][19]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][19] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][19] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][18]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][18]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][18]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][18]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][18]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][18]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][18] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][18] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][17]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][17]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][17]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][17]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][17]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][17]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][17] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][17] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][16]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][16]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][16]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][16]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][16]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][16]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][16] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][16] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][23]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][23]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][23]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][23]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][23]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][23]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][23] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][23] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][22]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][22]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][22]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][22]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][22]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][22]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][22] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][22] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][21]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][21]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][21]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][21]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][21]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][21]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][21] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][21] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][20]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][20]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][20]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][20]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][20]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][20]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][20] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][20] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][31]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][31]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][31]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][31]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][31]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][31]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][31] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][31] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][30]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][30]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][30]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][30]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][30]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][30]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][30] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][30] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][29]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][29]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][29]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][29]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][29]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][29]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][29] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][29] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][28]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][28]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][28]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][28]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][28]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][28]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][28] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][28] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][27]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][27]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][27]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][27]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][27]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][27]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][27] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][27] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][26]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][26]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][26]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][26]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][26]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][26]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][26] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][26] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][25]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][25]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][25]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][25]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][25]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][25]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][25] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][25] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[4][24]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[5][24]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[6][24]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[7][24]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[8][24]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[9][24]  ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[10][24] ; Stuck at GND due to stuck port data_in ;
+; proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Banc[11][24] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 256                                       ;                                        ;
++-------------------------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 2368  ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 6     ;
+; Number of registers using Asynchronous Clear ; 2335  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2328  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                               ;
++----------------------------------------------------------------------------------+---------+
+; Inverted Register                                                                ; Fan out ;
++----------------------------------------------------------------------------------+---------+
+; pclk                                                                             ; 2336    ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][3]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][3]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][1]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][1]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][0]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][0]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][2]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][2]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][7]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][7]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][5]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][5]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][4]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][4]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][6]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][6]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][11] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][11] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][9]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][9]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][8]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][8]  ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][10] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][10] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][15] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][15] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][13] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][13] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][12] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][12] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][14] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][14] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][19] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][19] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][17] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][17] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][16] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][16] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][18] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][18] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][23] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][23] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][21] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][21] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][20] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][20] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][22] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][22] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][31] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][31] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][30] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][30] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][29] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][29] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][28] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][28] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][27] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][27] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][26] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][26] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][25] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][25] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][24] ; 1       ;
+; proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][24] ; 1       ;
+; Total number of inverted registers = 65                                          ;         ;
++----------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MONOCYCLE|SEVEN_SEG:seven_seg1|Segout                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MONOCYCLE|SEVEN_SEG:seven_seg2|Segout                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MONOCYCLE|SEVEN_SEG:seven_seg3|Segout                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MONOCYCLE|SEVEN_SEG:seven_seg4|Segout                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MONOCYCLE|SEVEN_SEG:seven_seg5|Segout                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MONOCYCLE|SEVEN_SEG:seven_seg6|Segout                                            ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|ALU:alu_cabl_mux|Mux26     ;
+; 8:1                ; 32 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Mux21 ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg|Mux52 ;
+; 65:1               ; 7 bits    ; 301 LEs       ; 301 LEs              ; 0 LEs                  ; No         ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_toreg|S[4]      ;
+; 128:1              ; 5 bits    ; 425 LEs       ; 5 LEs                ; 420 LEs                ; No         ; |MONOCYCLE|proco:processor|Unite_controle:Unit_controle|Decoder:decod|Mux5        ;
+; 68:1               ; 25 bits   ; 1125 LEs      ; 1125 LEs             ; 0 LEs                  ; No         ; |MONOCYCLE|proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_toreg|S[25]     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|instruction_unit:instr_unit|Extend:extend ;
++----------------+-------+-------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                          ;
++----------------+-------+-------------------------------------------------------------------------------+
+; n              ; 24    ; Signed Integer                                                                ;
++----------------+-------+-------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|Unite_traitement:Unit_trait|Extend:imm_extend ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_alu ;
++----------------+-------+--------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                           ;
++----------------+-------+--------------------------------------------------------------------------------+
+; n              ; 32    ; Signed Integer                                                                 ;
++----------------+-------+--------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_toreg ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; n              ; 32    ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|Unite_controle:Unit_controle|Reg:regist ;
++----------------+-------+-----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------+
+; n              ; 2     ; Signed Integer                                                              ;
++----------------+-------+-----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|Unite_controle:Unit_controle|Mux2v1:rb_mux ;
++----------------+-------+--------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                           ;
++----------------+-------+--------------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                                 ;
++----------------+-------+--------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: proco:processor|Reg:reg_aff ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; n              ; 32    ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "proco:processor|Unite_controle:Unit_controle"                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; rw   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ra   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "proco:processor"                                                                              ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; affout[31..24] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 71                          ;
+; cycloneiii_ff         ; 2368                        ;
+;     CLR               ; 1                           ;
+;     CLR SLD           ; 6                           ;
+;     ENA CLR           ; 2328                        ;
+;     SCLR              ; 32                          ;
+;     plain             ; 1                           ;
+; cycloneiii_lcell_comb ; 2236                        ;
+;     arith             ; 103                         ;
+;         2 data inputs ; 36                          ;
+;         3 data inputs ; 67                          ;
+;     normal            ; 2133                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 66                          ;
+;         2 data inputs ; 5                           ;
+;         3 data inputs ; 113                         ;
+;         4 data inputs ; 1948                        ;
+;                       ;                             ;
+; Max LUT depth         ; 18.40                       ;
+; Average LUT depth     ; 10.10                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Sun Jun 15 18:24:09 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MONOCYCLE -c MONOCYCLE
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/unite_traitement.vhd
+    Info (12022): Found design unit 1: Unite_traitement-RTL File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 25
+    Info (12023): Found entity 1: Unite_traitement File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/unite_controle.vhd
+    Info (12022): Found design unit 1: Unite_controle-Behavioral File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_controle.vhd Line: 27
+    Info (12023): Found entity 1: Unite_controle File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_controle.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/seven_seg.vhd
+    Info (12022): Found design unit 1: SEVEN_SEG-COMB File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/SEVEN_SEG.vhd Line: 39
+    Info (12023): Found entity 1: SEVEN_SEG File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/SEVEN_SEG.vhd Line: 31
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/registerarm.vhd
+    Info (12022): Found design unit 1: RegisterARM-rtl File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/RegisterARM.vhd Line: 20
+    Info (12023): Found entity 1: RegisterARM File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/RegisterARM.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/reg.vhd
+    Info (12022): Found design unit 1: Reg-Behavioral File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Reg.vhd Line: 18
+    Info (12023): Found entity 1: Reg File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Reg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/proco.vhd
+    Info (12022): Found design unit 1: proco-Behavioral File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 14
+    Info (12023): Found entity 1: proco File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/mux2v1.vhd
+    Info (12022): Found design unit 1: Mux2v1-Behavioral File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Mux2v1.vhd Line: 17
+    Info (12023): Found entity 1: Mux2v1 File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Mux2v1.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/monocycle.vhd
+    Info (12022): Found design unit 1: MONOCYCLE-rtl File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 17
+    Info (12023): Found entity 1: MONOCYCLE File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/memoire_data.vhd
+    Info (12022): Found design unit 1: memoire_data-rtl File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 16
+    Info (12023): Found entity 1: memoire_data File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/instruction_unit.vhd
+    Info (12022): Found design unit 1: instruction_unit-RTL File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_unit.vhd Line: 16
+    Info (12023): Found entity 1: instruction_unit File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_unit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/instruction_memory.vhd
+    Info (12022): Found design unit 1: INSTRUCTION_MEMORY-RTL File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_memory.vhd Line: 12
+    Info (12023): Found entity 1: INSTRUCTION_MEMORY File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_memory.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/extend.vhd
+    Info (12022): Found design unit 1: Extend-Behavioral File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Extend.vhd Line: 16
+    Info (12023): Found entity 1: Extend File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Extend.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/decoder.vhd
+    Info (12022): Found design unit 1: Decoder-Behavioral File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Decoder.vhd Line: 25
+    Info (12023): Found entity 1: Decoder File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Decoder.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /cours/vhdl/projet/monocycle_arm7tdmi/src/alu.vhd
+    Info (12022): Found design unit 1: ALU-rtl File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/ALU.vhd Line: 17
+    Info (12023): Found entity 1: ALU File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/ALU.vhd Line: 6
+Info (12127): Elaborating entity "MONOCYCLE" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at MONOCYCLE.vhd(10): used implicit default value for signal "LED" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+Warning (10873): Using initial value X (don't care) for net "HEX[47]" at MONOCYCLE.vhd(11) File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Warning (10873): Using initial value X (don't care) for net "HEX[39]" at MONOCYCLE.vhd(11) File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Warning (10873): Using initial value X (don't care) for net "HEX[31]" at MONOCYCLE.vhd(11) File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Warning (10873): Using initial value X (don't care) for net "HEX[23]" at MONOCYCLE.vhd(11) File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Warning (10873): Using initial value X (don't care) for net "HEX[15]" at MONOCYCLE.vhd(11) File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Warning (10873): Using initial value X (don't care) for net "HEX[7]" at MONOCYCLE.vhd(11) File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Info (12128): Elaborating entity "SEVEN_SEG" for hierarchy "SEVEN_SEG:seven_seg1" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 39
+Info (12128): Elaborating entity "proco" for hierarchy "proco:processor" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 81
+Warning (10036): Verilog HDL or VHDL warning at proco.vhd(35): object "s_rd" assigned a value but never read File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 35
+Warning (10036): Verilog HDL or VHDL warning at proco.vhd(35): object "s_rn" assigned a value but never read File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 35
+Info (12128): Elaborating entity "instruction_unit" for hierarchy "proco:processor|instruction_unit:instr_unit" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 40
+Info (12129): Elaborating entity "Extend" using architecture "A:behavioral" for hierarchy "proco:processor|instruction_unit:instr_unit|Extend:extend" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_unit.vhd Line: 21
+Info (12129): Elaborating entity "INSTRUCTION_MEMORY" using architecture "A:rtl" for hierarchy "proco:processor|instruction_unit:instr_unit|INSTRUCTION_MEMORY:inst_mem" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_unit.vhd Line: 30
+Info (12128): Elaborating entity "Unite_traitement" for hierarchy "proco:processor|Unite_traitement:Unit_trait" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 49
+Info (12129): Elaborating entity "RegisterARM" using architecture "A:rtl" for hierarchy "proco:processor|Unite_traitement:Unit_trait|RegisterARM:banc_reg" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 30
+Info (12129): Elaborating entity "Extend" using architecture "A:behavioral" for hierarchy "proco:processor|Unite_traitement:Unit_trait|Extend:imm_extend" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 43
+Info (12129): Elaborating entity "Mux2v1" using architecture "A:behavioral" for hierarchy "proco:processor|Unite_traitement:Unit_trait|Mux2v1:mux_alu" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 52
+Info (12129): Elaborating entity "ALU" using architecture "A:rtl" for hierarchy "proco:processor|Unite_traitement:Unit_trait|ALU:alu_cabl_mux" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 63
+Info (12129): Elaborating entity "memoire_data" using architecture "A:rtl" for hierarchy "proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_traitement.vhd Line: 74
+Info (12128): Elaborating entity "Unite_controle" for hierarchy "proco:processor|Unite_controle:Unit_controle" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 67
+Info (12128): Elaborating entity "Decoder" for hierarchy "proco:processor|Unite_controle:Unit_controle|Decoder:decod" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_controle.vhd Line: 36
+Warning (10492): VHDL Process Statement warning at Decoder.vhd(104): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Decoder.vhd Line: 104
+Info (12128): Elaborating entity "Reg" for hierarchy "proco:processor|Unite_controle:Unit_controle|Reg:regist" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_controle.vhd Line: 51
+Info (12128): Elaborating entity "Mux2v1" for hierarchy "proco:processor|Unite_controle:Unit_controle|Mux2v1:rb_mux" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Unite_controle.vhd Line: 63
+Info (12128): Elaborating entity "Reg" for hierarchy "proco:processor|Reg:reg_aff" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/proco.vhd Line: 86
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276013): RAM logic "proco:processor|instruction_unit:instr_unit|INSTRUCTION_MEMORY:inst_mem|mem" is uninferred because MIF is not supported for the selected family File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/instruction_memory.vhd Line: 33
+Info (13000): Registers with preset signals will power-up high File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LED[0]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[1]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[2]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[3]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[4]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[5]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[6]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[7]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[8]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "LED[9]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 10
+    Warning (13410): Pin "HEX[7]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+    Warning (13410): Pin "HEX[15]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+    Warning (13410): Pin "HEX[23]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+    Warning (13410): Pin "HEX[31]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+    Warning (13410): Pin "HEX[39]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+    Warning (13410): Pin "HEX[47]" is stuck at GND File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 11
+Info (286030): Timing-Driven Synthesis is running
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][3] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][3] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][0] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][0] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][1] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][1] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][2] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][2] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][7] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][7] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][4] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][4] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][5] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][5] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][6] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][6] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][11] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][11] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][8] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][8] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][9] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][9] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][10] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][10] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][15] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][15] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][12] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][12] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][13] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][13] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][14] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][14] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][19] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][19] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][16] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][16] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][17] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][17] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][18] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][18] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][23] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][23] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][20] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][20] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][21] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][21] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][22] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][22] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][31] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][31] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][30] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][30] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][29] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][29] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][28] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][28] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][27] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][27] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][26] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][26] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][25] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][25] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[16][24] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+    Critical Warning (18010): Register proco:processor|Unite_traitement:Unit_trait|memoire_data:mem_dat|memoire[26][24] will power up to High File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/Memoire_data.vhd Line: 24
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 10 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[1]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[2]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[3]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[4]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[5]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[6]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[7]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[8]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "SW[9]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 9
+    Warning (15610): No output dependent on input pin "BUTTON[1]" File: D:/cours/VHDL/Projet/Monocycle_ARM7TDMI/src/MONOCYCLE.vhd Line: 12
+Info (21057): Implemented 4570 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 58 output pins
+    Info (21061): Implemented 4499 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 104 warnings
+    Info: Peak virtual memory: 4946 megabytes
+    Info: Processing ended: Sun Jun 15 18:24:21 2025
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:14
+
+

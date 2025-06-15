@@ -1,0 +1,189 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "HEX[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[8]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[9]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[10]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[11]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[12]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[13]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[14]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[16]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[17]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[18]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[19]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[20]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[21]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[22]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[24]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[25]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[26]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[27]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[28]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[29]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[30]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[32]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[33]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[34]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[35]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[36]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[37]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[38]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[40]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[41]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[42]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[43]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[44]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[45]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX[46]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BUTTON[0]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
